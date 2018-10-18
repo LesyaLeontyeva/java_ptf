@@ -35,6 +35,7 @@ public class ApplicationManager {
 
     public void init() {
 //        Integer browser = BrowserType.MOZILLA;
+//
         if (browser == BrowserType.MOZILLA) {
             wd = new FirefoxDriver();
         } else if (browser == BrowserType.DEFAULT) {
