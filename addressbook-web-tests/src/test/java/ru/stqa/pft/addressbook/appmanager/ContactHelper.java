@@ -7,6 +7,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends NavigationHelper {
+    private boolean creation;
 //    private FirefoxDriver wd;
 
     public ContactHelper(WebDriver wd) {
@@ -17,7 +18,7 @@ public class ContactHelper extends NavigationHelper {
         wd.findElement(locator).click();
     }
 
-    public void fillContactForm(ContactData contactData, boolean creation) {
+    public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("company"), contactData.getCompany());
@@ -64,4 +65,14 @@ public class ContactHelper extends NavigationHelper {
         click(By.name("update"));
     }
 
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact);
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+
+    }
 }
