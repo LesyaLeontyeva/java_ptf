@@ -51,12 +51,14 @@ public class ContactHelper extends NavigationHelper {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+//        click(By.name("selected[]"));
     }
 
-    public void initContactModification() {
-        click(By.cssSelector("img[alt='Edit']"));
+    public void initContactModification(int index) {
+        wd.findElements(By.cssSelector("img[alt='Edit']")).get(index).click();
+//        click(By.cssSelector("img[alt='Edit']"));
     }
 
     public void submitContactModification() {
